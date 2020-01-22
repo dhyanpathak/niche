@@ -1,0 +1,45 @@
+#search .field {
+    display: inline-block;
+}
+#search .control {
+    margin-left: -8%;
+    display: inline-block;
+    width: 100vw;
+    padding-bottom: 23px;
+}
+#search input {
+    display: inline-block;
+    padding-right: 15px;
+}
+#search .control i {
+    color: dimgray;
+}
+#search .control button {
+    margin-left: 5px;
+}
+#search .feed {
+    margin-top: 10vh;
+}
+#search .title {
+    position: initial !important;
+    margin-bottom: 0px;
+}
+#search .title:before {
+    width: 100% !important;
+}
+#searchbar {
+    display: inline-block;
+    border-bottom: 2px solid white;
+    width: 95vw;
+    left: 5vw;
+    position: fixed;
+    right: 0;
+    z-index: 30;
+    background-color: #0E0E0F;
+    top: 9.6vh;
+}
+@media screen and (max-width: 802px) {
+    #search .control {
+        margin-left: 0px;
+    }
+}

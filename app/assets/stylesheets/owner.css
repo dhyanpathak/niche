@@ -1,0 +1,90 @@
+.modal.is-active {
+    top: 9.7vh;
+    padding: 0rem;
+    background-color: #0E0E0F !important;
+}
+.modal-background {
+    background-color: inherit;
+}
+.modal-content {
+    height: 75%;
+    width: 100%;
+    padding: 3rem 4rem 0rem 4rem;
+}
+.modal-close {
+    left: 5vw;
+    top: 11vh;
+}
+.is-large.modal-close {
+    height: 5vw;
+    max-height: 5vw;
+    max-width: 5vw;
+    width: 5vw;
+}
+.modal-header {
+    background-color: #0E0E0F;
+    position: fixed;
+    z-index: 30;
+    width: inherit;
+    margin-top: 1vh;
+    top: 10vh;
+    padding-left: 7vw;
+}
+.modal-header .title:before {
+    border-bottom: none !important;
+    width: 0%;
+}
+.modal-header {
+    border-bottom: 2px solid white;
+    width: 100%;    
+}
+.modal-header .fa:hover {
+    cursor: pointer;
+    color: lightgreen;
+}
+.modal-header .fa {
+    margin-left: 20px;
+    margin-top: 6px;
+}
+.modal-header.content {
+    margin-left: 10px;
+} 
+.modal-header .tag {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 425) {
+    .modal-content {
+        height: 100%;
+    }
+    .modal-content .feed {
+        margin-right: 16vw !important;
+    }
+} 
+@media screen and (max-width: 1024) and (min-width: 426) { 
+    .is-large.modal-close {
+        height: 10vw;
+        max-height: 10vw;
+        max-width: 10vw;
+        width: 10vw;
+    }
+    #content .modal-header {
+        top: 8.8vh;
+    }
+    .modal-content {
+        padding: 0rem 1rem 0rem 1rem !important;
+    }   
+    .modal-content .feed {
+        margin-left: 10vw !important;
+    }
+}
+@media screen and (min-width: 1672) {
+    .is-large.modal-close {
+        height: 3vh;
+        max-height: 5vh;
+        max-width: 5vh;
+        width: 3vh;
+    }
+}
+

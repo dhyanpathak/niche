@@ -1,0 +1,76 @@
+.bg {
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url(../images/background-bw-1.jpg);
+    min-height: 100%;
+    min-width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Roboto Mono', monospace;
+    color: white;
+    box-shadow: inset 0px 0px 40vh black
+}
+
+.hero-body {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.banner {
+    height: 40%;
+    min-width: 100%;
+    display: block;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1%;
+}
+
+.title {
+    color: white;
+    font-size: 8rem;
+    font-weight: 900;   
+}
+
+.slogan {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.author {
+    font-size: 0.75rem;
+    bottom: 0.1vh;
+}
+
+.auth-form {
+    color: white;
+}
+
+.modal {
+    height: 100%;
+    padding: 10%;
+}
+
+.close {
+    margin-right: 45vw;
+    color: lightgrey;
+}
+
+.close:hover {
+    color: white;
+}
+
+@media screen and (max-width: 700px) {
+    .title {
+        font-size: 12vw;
+    }
+    .slogan {
+        font-size: 3vw;
+    }
+    .author {
+        font-size: 2vw;
+    }
+}

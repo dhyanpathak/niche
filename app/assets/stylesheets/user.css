@@ -1,0 +1,75 @@
+#profile-header {
+    display: inline-block;
+    border-bottom: 2px solid white;
+    width: 95vw;
+    left: 5vw;
+    position: fixed;
+    right: 0;
+    z-index: 30;
+    background-color: #0E0E0F;
+    top: 9.6vh;
+}
+#profile-header .title {
+    margin-left: 5rem;
+    top: inherit !important;
+    position: inherit !important;
+}
+#profile-header figure {
+    margin-top: 2vh;
+    float: left;
+    height: 3.5rem;
+    width: 3.5rem;
+    display: inline-block;
+}
+img.is-rounded {
+    background-color: dimgray;
+}
+#profile-header h1 {
+    padding-bottom: 0px !important;
+    margin-top: 0px !important;
+    float: left;
+    margin-right: 5vw !important;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 50vw !important;
+}
+#profile-header .title:before {
+    border-bottom: none !important;
+}
+#profile-header .breadcrumb {
+    margin-top: 3rem;
+    float: left;
+    display: flex;
+    margin-left: 1rem;
+    font-size: 0.75rem;
+}
+#profile-header a {
+    float: right;
+    padding-right: 3vw;
+}
+#profile p {
+    margin-top: 15px;
+    text-align: center;
+}
+.fixed-bottom {
+    position: fixed;
+    left: 83vw;
+    bottom: 2vh;
+    width: 3vw;
+    text-align: center;
+}
+#profile .fixed-bottom {
+    font-weight: bolder;
+    
+}
+#profile .feed {
+    margin-top: 4rem;
+}
+@media screen and (min-width: 740px) {
+    #profile-header h1 {
+        width: 77vw !important;
+    }
+    #profile-header .breadcrumb {
+        font-size: 1rem;
+    }
+}

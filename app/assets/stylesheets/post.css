@@ -1,0 +1,36 @@
+.card {
+    margin: 1em;
+    display: inline-block;
+    width: 20vw;
+    background-color: #363636;
+    border-radius: 10px;
+    box-shadow: 0px 10px -14px 14px #FFF;
+}
+.liked {
+    color: #EF4143 !important;
+}
+.card p {
+    color: white;
+}
+.card i {
+    color: white;
+}
+.card-header-title {
+    font-weight: 400;
+}
+.card-content {
+    padding: 0.5rem;
+}
+.tag {
+    margin-right: 2px;
+    font-weight: bold;
+}
+
+.card-footer-item:not(:last-child) {
+    border-right-color: transparent;
+}
+@media screen and (max-width: 425px) {
+    .card {
+        width: 75vw;
+    }
+}

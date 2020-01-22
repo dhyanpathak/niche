@@ -1,0 +1,34 @@
+.field {
+    margin-left: 30%;
+}
+.label {
+    color: white;
+    width: 10%;
+}
+.input {
+    width: 40%;
+}
+.name {
+    width: 14.5vw;
+    margin-right: 1vw;
+}
+.error {
+    height: 2rem;
+}
+
+.demo {
+    color: lightgrey;
+}
+
+.demo:hover {
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    .input {
+        width: 70%;
+    }
+    .field {
+        margin-left: 0%;
+    }
+}

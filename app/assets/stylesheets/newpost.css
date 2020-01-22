@@ -1,0 +1,23 @@
+#profile .modal-card {
+    margin-bottom: 20vh;
+}
+#profile .field {
+    margin-left: 0px;
+}
+#profile .modal-card-body {
+    background-color: dimgray;
+}
+#profile .input {
+    width: 100% !important;
+}
+#profile .label {
+    width: 100% !important;
+    color: #F5F5F5;
+}
+#profile .modal-card-body img {
+    width: 200px;
+    height: 200px;
+}
+#profile .modal-card-foot {
+    padding-left: 40%;
+}

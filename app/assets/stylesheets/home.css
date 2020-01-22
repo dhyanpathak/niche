@@ -1,0 +1,30 @@
+
+#home .home-tabs {
+    padding: 0.5rem;
+    width: 100vw;
+    background-color: #0E0E0F;
+    font-weight: 1;
+    font-size: 1.5em;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    top: 9.7vh;
+    z-index: 1;
+}
+
+#home .tabs li.is-active a {
+    border-bottom-width: 2px;
+}
+
+.feed {
+    z-index: -1;
+}
+@media screen and (max-width: 1337px) {
+    #home .home-tabs {
+        font-size: 1.25em;
+        margin-left: -5vw;
+    }
+}

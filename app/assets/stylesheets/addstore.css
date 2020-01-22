@@ -1,0 +1,51 @@
+#addstore {
+    margin-top: 5vh;
+    margin-left: 25vw;
+    width: 35vw;
+}
+.panel {
+    background-color: dimgray;
+    height: 100%;
+}
+.panel-color {
+    font-weight: 600;
+}
+.panel-block {
+    display: block;
+}
+.panel-block p {
+    color: white;
+    width: 100%;
+}
+.panel-block button {
+    margin-top: 20px;
+}
+#addstore i {
+    color: #363636;
+}
+#addstore .input {
+    width: 100%;
+}
+.react-tags__search-wrapper input {
+    border-radius: 5px;
+    width: 100% !important;
+    height: 5vh;
+}
+.react-tags__search {
+    margin-top: 3vh;
+}
+.react-tags__suggestions {
+    background-color: #ededed;
+    width: 40%;
+}
+.react-tags__selected-tag {
+    border-radius: 5px;
+    border-style: solid;
+    margin-right: 5px;
+}
+@media screen and (max-width: 768px) {
+    #addstore {
+        margin-left: 5vw;
+        width: 75vw;
+    }
+}
