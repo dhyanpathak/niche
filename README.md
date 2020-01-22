@@ -1,5 +1,9 @@
 # niche
-![screencap](https://scontent.fxds1-1.fna.fbcdn.net/v/t1.15752-9/82417384_484324405798807_6864265987152150528_n.png?_nc_cat=100&_nc_ohc=aOPZNMSLMzcAX_Rty7Q&_nc_ht=scontent.fxds1-1.fna&oh=c4334ebd246450b2d3e763876932fb22&oe=5ED66E32)
+[Check it out](https://niche-staging.herokuapp.com/)
+
+
+![screencap](https://github.com/dhyanpathak/niche/blob/master/demo-gif.gif?raw=true)
+
 Allows you to discover new clothing brands of your particular taste. 
 This is a React on Rails mobile-friendly web app. 
 Store data comes from user inputted links of Shopify stores and information is retrieved from `products.json` page.
