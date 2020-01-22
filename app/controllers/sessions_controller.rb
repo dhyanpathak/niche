@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   def is_logged_in?
     if logged_in? && current_user
-      posts = Post.where(by: current_user.id)
+      posts = Post.where(by: current_user.id, is_store?: false)
       render json: {
         logged_in: true,
         user: current_user,
