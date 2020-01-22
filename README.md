@@ -1,5 +1,4 @@
 # niche
-*production site might be a bit wonky due to Rails+Webpacker in Heroku*
 ![screencap](https://scontent.fxds1-1.fna.fbcdn.net/v/t1.15752-9/82417384_484324405798807_6864265987152150528_n.png?_nc_cat=100&_nc_ohc=aOPZNMSLMzcAX_Rty7Q&_nc_ht=scontent.fxds1-1.fna&oh=c4334ebd246450b2d3e763876932fb22&oe=5ED66E32)
 Allows you to discover new clothing brands of your particular taste. 
 This is a React on Rails mobile-friendly web app. 
