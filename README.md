@@ -35,6 +35,8 @@ Stuff that I have left to do is:
 
 * Closet page where users can posts their outfits and better organize what they wear
 
+* Include style tags in the search feature so users can find stores/clothes/users of a particular style (and even a set of styles)
+
 The user posts are stored in Google Cloud Storage and the database of choice is Postgres considering its ease in quick deployments to Heroku. A SQL database was chosen for its lack of redundancy with normalization, fast speeds in retrieval, ACID compliant standards to uphold stability. 
 Given how this project may evolve and buzzwordy concepts might get thrown at it (like using machine learning for curation), a NoSQL db would be considered for its capability in handling big data, being flexible with various data models and low cost scalability. 
 
