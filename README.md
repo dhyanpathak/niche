@@ -27,13 +27,17 @@ This app has the following functionality and features:
 * User page/User post
 
 Stuff that I have left to do is:
-* Add Redux to better manage state and transfer data seamlessly through components
+* Add Redux to better manage state and transfer data seamlessly through components (currently you have to refresh to load newly added store, switch tabs to load more posts in Spotlight)
 
 * Turn the RESTful API into GraphQL
 
 * Implement Follow/Following features between users
 
+* Add BigCartel stores in the Add Store page as well (this is if I don't intern at Shopify lol) 
+
 * Closet page where users can posts their outfits and better organize what they wear
+
+* Update user account with a personalized page so people can add avatars and bios etc.
 
 * Include style tags in the search feature so users can find stores/clothes/users of a particular style (and even a set of styles)
 
