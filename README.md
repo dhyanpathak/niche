@@ -1,5 +1,9 @@
 # niche
-![screencap](https://scontent.fxds1-1.fna.fbcdn.net/v/t1.15752-9/82417384_484324405798807_6864265987152150528_n.png?_nc_cat=100&_nc_ohc=aOPZNMSLMzcAX_Rty7Q&_nc_ht=scontent.fxds1-1.fna&oh=c4334ebd246450b2d3e763876932fb22&oe=5ED66E32)
+[Check it out](https://niche-staging.herokuapp.com/)
+
+
+![screencap](https://github.com/dhyanpathak/niche/blob/master/demo-gif.gif?raw=true)
+
 Allows you to discover new clothing brands of your particular taste. 
 This is a React on Rails mobile-friendly web app. 
 Store data comes from user inputted links of Shopify stores and information is retrieved from `products.json` page.
@@ -23,13 +27,19 @@ This app has the following functionality and features:
 * User page/User post
 
 Stuff that I have left to do is:
-* Add Redux to better manage state and transfer data seamlessly through components
+* Add Redux to better manage state and transfer data seamlessly through components (currently you have to refresh to load newly added store, switch tabs to load more posts in Spotlight)
 
 * Turn the RESTful API into GraphQL
 
 * Implement Follow/Following features between users
 
+* Add BigCartel stores in the Add Store page as well (this is if I don't intern at Shopify lol) 
+
 * Closet page where users can posts their outfits and better organize what they wear
+
+* Update user account with a personalized page so people can add avatars and bios etc.
+
+* Include style tags in the search feature so users can find stores/clothes/users of a particular style (and even a set of styles)
 
 The user posts are stored in Google Cloud Storage and the database of choice is Postgres considering its ease in quick deployments to Heroku. A SQL database was chosen for its lack of redundancy with normalization, fast speeds in retrieval, ACID compliant standards to uphold stability. 
 Given how this project may evolve and buzzwordy concepts might get thrown at it (like using machine learning for curation), a NoSQL db would be considered for its capability in handling big data, being flexible with various data models and low cost scalability. 
