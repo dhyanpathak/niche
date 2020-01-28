@@ -17,8 +17,7 @@ class Main extends Component {
             home: true,
             search: false,
             likes: false,
-            profile: false,
-            newLiked: null
+            profile: false
         };
     }
     componentWillMount() {
@@ -39,9 +38,7 @@ class Main extends Component {
                 this.setState({ home: false, search: false, likes: false, profile: true })
         }
     }
-    updateLikes = (post) => {
-        this.setState({ newLiked: post });
-    }
+
     render() {
         return (
             <div id="main">
@@ -55,9 +52,9 @@ class Main extends Component {
                     handleSelected={this.handleSelected}
                 />
                 <div id="content">
-                    <Home updateLikes={this.updateLikes} isActive={this.state.home} />
-                    <Likes newLiked={this.state.newLiked} userId={this.props.user.id} isActive={this.state.likes} />
-                    <Search updateLikes={this.updateLikes} isActive={this.state.search} />
+                    <Home isActive={this.state.home} />
+                    <Likes userId={this.props.user.id} isActive={this.state.likes} />
+                    <Search isActive={this.state.search} />
                     <User {...this.props} isActive={this.state.profile} user={this.props.user} handleLogout={this.props.handleLogout} />
                 </div>
             </div>

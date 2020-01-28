@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loadLikes } from '../actions';
 
 import 'font-awesome/css/font-awesome.min.css';
 import Post from './Post';
@@ -9,19 +12,10 @@ import { Title, Progress } from 'bloomer';
 class Likes extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            loadedLikes: false,
-            data: null
-        }
     }
 
     componentDidMount() {
-        let url = window.location.origin + '/api/users/' + this.props.userid + '/likes';
-        axios.get(url, { withCredentials: true })
-            .then(resp => {
-                this.setState({ loadedLikes: true, data: resp.data.likes });
-            })
-            .catch(error => console.log('API ERROR:', error));
+        this.props.loadLikes(this.props.userid);
     }
 
     generatePosts = (data) => {
@@ -37,12 +31,21 @@ class Likes extends Component {
             <div id="likes" style={{ display: this.props.isActive ? "block" : "none" }}>
                 <Title isSize={5}>Your likes</Title>
                 <div className="feed">
-                    {this.props.newLiked !== null ? this.generatePosts([this.props.newLiked]) : null}
-                    {this.state.loadedLikes ? this.generatePosts(this.state.data) : <Progress isSize="small" max={100} />}
+                    {this.props.loadedLikes ? this.generatePosts(this.props.likes) : <Progress isSize="small" max={100} />}
                 </div>
             </div>
         );
     }
 };
 
-export default Likes;
+Likes.propTypes = {
+    loadedLikes: PropTypes.bool.isRequired,
+    likes: PropTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+    loadedLikes: state.postInteraction.loadedLikes,
+    likes: state.postInteraction.likes,
+})
+
+export default connect(mapStateToProps, { loadLikes })(Likes);

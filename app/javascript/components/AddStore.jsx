@@ -80,7 +80,7 @@ class AddStore extends Component {
 
         axios.post('/api/stores', storeInfo, { withCredentials: true })
             .then(resp => {
-                this.setState({ status: 'Successfully added store!' });
+                this.setState({ status: 'Successfully added store!\nRefresh the page to see products.' });
             })
             .catch(err => {
                 this.setState({ status: 'Could not save store, possibly because it already exists in the app.' });

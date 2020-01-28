@@ -19,7 +19,6 @@ Rails.application.routes.draw do
     resources :posts, only: %i[index create show destroy update] do
       member do
         get 'like'
-        get 'unlike'
       end
     end
     resources :users, only: %i[create show index update] do

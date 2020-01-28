@@ -1,31 +1,26 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+
+import { connect } from 'react-redux';
+import { likePost } from '../actions';
+
 import Owner from './Owner';
 import 'font-awesome/css/font-awesome.min.css';
 import 'bulma/css/bulma.css';
 import { Tag, Content, Card, CardHeader, CardContent, CardHeaderTitle, CardImage, Icon, CardFooter, CardFooterItem } from 'bloomer';
 import '../../assets/stylesheets/post.css';
 
-const Post = ({ id, title, image, link, is_liked, is_store, by, tag_list, onlyLikes, newLike, fullProfile, hasTags, hasLink }) => {
+const Post = (props) => {
+    const { id, title, image, link, is_liked, is_store, by, tag_list, onlyLikes, fullProfile, hasTags, hasLink } = props;
     const [liked, setLiked] = useState(onlyLikes ? true : (is_liked !== undefined ? is_liked : false));
     const [owner, setOwner] = useState(0);
     const [displayOwner, setDisplayOwner] = useState(false);
 
     const togglePostLiked = (bool) => {
         setLiked(bool);
-        if (bool) {
-            axios.get('/api/posts/' + id + '/like', { withCredentials: true })
-                .then(resp => {
-                    if (!onlyLikes) {
-                        newLike(resp.data.post);
-                    }
-                })
-                .catch(error => console.log('API ERROR:', error));
-        } else {
-            axios.get('/api/posts/' + id + '/unlike', { withCredentials: true })
-                .catch(error => console.log('API ERROR:', error));
-        }
+        props.likePost(id);
     }
+
     const closeOwner = () => {
         setDisplayOwner(false);
     }
@@ -107,4 +102,4 @@ const Post = ({ id, title, image, link, is_liked, is_store, by, tag_list, onlyLi
     )
 };
 
-export default Post;
+export default connect(null, { likePost })(Post);

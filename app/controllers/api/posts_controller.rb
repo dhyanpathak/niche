@@ -76,20 +76,16 @@ class Api::PostsController < ApplicationController
 
   def like
     post = Post.find(params[:id])
-    current_user.favorite(post)
-    if post.update_attribute(:like_count, (post.like_count || 0) + 1)
+    begin
+      if post.favorited_by?(current_user)
+        current_user.unfavorite(post)
+        post.update_attribute(:like_count, (post.like_count || 0) + 1)
+      else
+        current_user.favorite(post)
+        post.update_attribute(:like_count, (post.like_count || 1) - 1)
+      end
       render json: { post: post }, status: :ok
-    else
-      render json: { errors: post.errors }, status: :unprocessable_entity
-    end
-  end
-
-  def unlike
-    post = Post.find(params[:id])
-    current_user.unfavorite(post)
-    if post.update_attribute(:like_count, (post.like_count || 1) - 1)
-      render json: { post: post }, status: :ok
-    else
+    rescue StandardError
       render json: { errors: post.errors }, status: :unprocessable_entity
     end
   end

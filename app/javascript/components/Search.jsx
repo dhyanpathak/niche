@@ -40,9 +40,7 @@ class Search extends Component {
                 console.log("API ERROR", err);
             });
     };
-    newLike = (post) => {
-        this.props.updateLikes(post);
-    }
+
     showStores = (data) => {
         return data.map((store) => {
             return <ResultBox key={store.id} data={store} is_store={true} />
@@ -55,7 +53,7 @@ class Search extends Component {
     }
     generatePosts = (data) => {
         return data.map((post) => {
-            return <Post newLike={this.newLike} onlyLikes={false} key={post.id} is_store={post['is_store?']} {...post} />
+            return <Post onlyLikes={false} key={post.id} is_store={post['is_store?']} {...post} />
         });
     }
     render() {

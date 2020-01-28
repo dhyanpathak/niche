@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
-import { Waypoint } from 'react-waypoint';
-import 'font-awesome/css/font-awesome.min.css';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loadHome, loadSpotlight, loadCurated } from '../actions';
+
 import Post from './Post';
 import AddStore from './AddStore';
+
+import 'font-awesome/css/font-awesome.min.css';
 import 'bulma/css/bulma.css';
 import { Tabs, TabList, Tab, TabLink, Heading, Progress } from 'bloomer';
 import '../../assets/stylesheets/home.css';
@@ -13,44 +16,28 @@ import '../../assets/stylesheets/home.css';
 class Home extends Component {
     constructor(props) {
         super(props);
+        this.handleScroll = this.handleScroll.bind(this);
         this.state = {
-            loaded: false,
-            spotlightData: null,
-            curatedData: null,
             showSpotlight: true,
             showPersonal: false,
             showAdd: false,
-            spotlightPage: 0
         }
     }
 
     componentDidMount() {
-        axios.get(window.location.origin + '/api/posts?page=' + this.state.spotlightPage,
-            { withCredentials: true })
-            .then(resp => {
-                this.setState({ loaded: true, spotlightData: resp.data.spotlight, curatedData: resp.data.curated, spotlightPage: this.state.spotlightPage += 1 });
-            })
-            .catch(error => console.log('API ERROR:', error));
+        this.props.loadHome(0);
+        window.addEventListener('scroll', this.handleScroll, true);
+        document.addEventListener("touchmove", this.handleScroll, true);
+        document.addEventListener("scroll", this.handleScroll, true);
     }
 
     getSpotlightPosts = () => {
-        axios.get(window.location.origin + '/api/posts?page=' + this.state.spotlightPage,
-            { withCredentials: true })
-            .then(resp => {
-                if (!resp) return;
-                if (resp.data.spotlight.length < 1) return;
-                this.setState({ spotlightData: resp.data.spotlight, spotlightPage: this.state.spotlightPage += 1 });
-            })
-            .catch(error => console.log('API ERROR:', error));
-    }
-
-    newLike = (post) => {
-        this.props.updateLikes(post);
+        this.props.loadSpotlight(this.props.spotlightPage);
     }
 
     generatePosts = (data) => {
         return data.map((post) => {
-            return <Post newLike={this.newLike} onlyLikes={false} key={post.id} is_store={post['is_store?']} {...post} />
+            return <Post onlyLikes={false} key={post.id} is_store={post['is_store?']} {...post} />
         });
     }
 
@@ -59,10 +46,30 @@ class Home extends Component {
         if (name == "spotlight") {
             this.setState({ showSpotlight: true, showPersonal: false, showAdd: false });
         } else if (name == "personal") {
+            this.props.loadCurated();
             this.setState({ showSpotlight: false, showPersonal: true, showAdd: false });
         } else if (name == "add") {
             this.setState({ showSpotlight: false, showPersonal: false, showAdd: true });
         }
+    }
+
+    isMobileDevice = () => {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    };
+
+    handleScroll = (e) => {
+        if(this.isMobileDevice()) {
+            const bottom = e.target.scrollHeight - e.target.scrollTop < (e.target.clientHeight*1.2);
+            if (bottom  && e.target.scrollTop > 0 && this.state.showSpotlight) {
+                this.getSpotlightPosts();
+            }
+        } else {
+            const bottom = e.target.scrollHeight - e.target.scrollTop < (e.target.clientHeight*1.1);
+            if (bottom && this.state.showSpotlight) {
+                this.getSpotlightPosts();
+            }
+        }
+        
     }
 
     render() {
@@ -89,14 +96,13 @@ class Home extends Component {
                 </Tabs>
                 <br />
                 <div className="feed" style={{ display: this.state.showSpotlight ? "inline-block" : "none" }}>
-                    {this.state.loaded ? this.generatePosts(this.state.spotlightData) : <Progress isSize="small" max={100} />}
-                    <Waypoint onEnter={() => this.getSpotlightPosts()} />
+                    {this.props.loaded ? this.generatePosts(this.props.spotlightData) : <Progress isSize="small" max={100} />}
                 </div>
                 <div className="feed" style={{ display: this.state.showPersonal ? "inline-block" : "none" }}>
-                    {this.state.loaded ?
+                    {this.props.loaded ?
                         <div>
                             <Heading>Based on your previous likes and posts</Heading>
-                            {this.generatePosts(this.state.curatedData.posts)}
+                            {this.generatePosts(this.props.curatedData.posts)}
                         </div>
                         :
                         <Progress isSize="small" max={100} />
@@ -110,4 +116,20 @@ class Home extends Component {
     }
 };
 
-export default Home;
+Home.propTypes = {
+    loaded: PropTypes.bool.isRequired,
+    loadSpotlight: PropTypes.func.isRequired,
+    spotlightData: PropTypes.array.isRequired,
+    spotlightPage: PropTypes.number.isRequired,
+    loadCurated: PropTypes.func.isRequired,
+    curatedData: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+    spotlightData: state.pageInteraction.spotlightData,
+    spotlightPage: state.pageInteraction.spotlightPage,
+    curatedData: state.pageInteraction.curatedData,
+    loaded: state.pageInteraction.loaded
+})
+
+export default connect(mapStateToProps, { loadHome, loadSpotlight, loadCurated })(Home);

@@ -19,7 +19,7 @@ const Menu = (props) => {
     return (
         <Navbar className="is-fixed-top">
             <NavbarBrand>
-                <NavbarItem>
+                <NavbarItem isHidden='touch'>
                     <img id="logo" src={logo} />
                 </NavbarItem>
             </NavbarBrand>
